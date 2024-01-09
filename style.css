@@ -1,0 +1,77 @@
+body {
+  font-family: Helvetica, Arial,  sans-serif;
+  color: white;
+  height: 100vh;
+  --bHeight: 100vh;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+main {
+  background-color: #212121;
+  height: 80%;
+  border-radius: calc(var(--bHeight)/20);
+  aspect-ratio: 1/2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.display {
+  width: 100%;
+  height: 37.5%;
+  padding: 5%;
+  padding-bottom: 10%;
+  margin: 0;
+  font-size: 36px;
+  font-weight: 200;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  box-sizing: border-box;
+}
+
+.button {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+button {
+  font-family: inherit;
+  font-size: 18px;
+  color: inherit;
+  width: 20%;
+  aspect-ratio: 1/1;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  margin: 2%;
+  box-sizing: border-box;
+}
+
+.number {
+  background-color: #686868;
+}
+
+.operator {
+  background-color: orange;
+}
+
+.other {
+  background-color: rgb(197, 197, 197);
+  color: black;
+}
+#zero {
+  width: 44%;
+  aspect-ratio: 11/5;
+  border-radius: calc(var(--bHeight)/10);
+  box-sizing: border-box;
+}
