@@ -6,8 +6,9 @@ let recentValue;
 const display = document.querySelector('.display');
 
 function getValue(number){
-  if (countDigit(arr) < 10) {
+  if (countDigit(arr) < 9) {
     arr.push(number)
+    console.log(countDigit);
     currentValue = parseFloat(arr.join('')); 
     updateValue();
   };
@@ -22,8 +23,11 @@ function countDigit(value) {
 }
 
 function updateValue() { 
-display.textContent = currentValue;
-}
+if (typeof currentValue === 'number') {
+  display.textContent = currentValue.toLocaleString();
+} else {
+  display.textContent = currentValue;
+}};
 
 numbers.forEach((number) => {
   number.addEventListener('click', () => {
@@ -66,13 +70,20 @@ function calculate() {
       currentValue = parseFloat(currentValue) / 100;
       break;
   };
-  if (countDigit(currentValue) > 10) {
-    currentValue = 'hmmm';
-  }
+  round10Digit();
   updateValue();
   arr = [];
   currentOperator = undefined;
   operators.forEach((operator) => {operator.classList.remove('on')});
+}
+function round10Digit () {
+  let integerCount = Math.floor(Math.abs(currentValue)).toString().length;
+  if (integerCount >= 10) {
+    currentValue = parseFloat(currentValue.toString().slice(0,6)) / (10**5) + 'e' + (integerCount - 1);
+  } else {
+    let decimalShown = 10 - integerCount;
+    currentValue = Math.round(currentValue * (10 ** decimalShown)) / (10 ** decimalShown);
+  }
 }
 
 const percentage = document.querySelector('#percentage');
