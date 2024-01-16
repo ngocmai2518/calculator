@@ -37,6 +37,7 @@ numbers.forEach((number) => {
 // add touch support
   number.addEventListener('touchstart', () => {
     getValue(number.value);
+    number.preventDefault();
   })
 });
 
@@ -107,11 +108,18 @@ percentage.addEventListener('click', () => {
 });
 
 // add touch support
+percentage.addEventListener('touchstart',  () => {
+  percentage.preventDefault();
+  calculate()
+});
 
 const equal = document.querySelector('#equal');
 equal.addEventListener('click', calculate);
 // add touch support
-equal.addEventListener('touchstart', calculate);
+equal.addEventListener('touchstart',  () => {
+  equal.preventDefault();
+  calculate()
+});
 
 const clear = document.querySelector('#C');
 clear.addEventListener('click', () => {
@@ -121,9 +129,11 @@ clear.addEventListener('click', () => {
 })
 // add touch support
 clear.addEventListener('touchstart', () => {
+  clear.preventDefault();
   arr = [];
   currentValue = 0;
   updateValue();
+
 })
 
 const allClear = document.querySelector('#AC');
@@ -137,6 +147,7 @@ allClear.addEventListener('click', () => {
 })
 // add touch support
 allClear.addEventListener('touchstart', () => {
+  allClear.preventDefault();
   arr = [];
   currentOperator = undefined;
   operators.forEach((operator) => {operator.classList.remove('on')});
