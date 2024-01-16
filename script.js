@@ -33,12 +33,26 @@ numbers.forEach((number) => {
   number.addEventListener('click', () => {
     getValue(number.value);
   })
+
+// add touch support
+  number.addEventListener('touchstart', () => {
+    getValue(number.value);
+  })
 });
 
 let currentOperator = undefined;
 
 operators.forEach((operator) => {
   operator.addEventListener('click', () => {
+    recentValue = currentValue;
+    operators.forEach((operator) => {operator.classList.remove('on')});
+    currentOperator = operator.textContent
+    arr = [];
+    operator.classList.add('on');
+  })
+
+  // add touch support
+  operator.addEventListener('touchstart', () => {
     recentValue = currentValue;
     operators.forEach((operator) => {operator.classList.remove('on')});
     currentOperator = operator.textContent
@@ -92,8 +106,12 @@ percentage.addEventListener('click', () => {
   calculate() 
 });
 
+// add touch support
+
 const equal = document.querySelector('#equal');
 equal.addEventListener('click', calculate);
+// add touch support
+equal.addEventListener('touchstart', calculate);
 
 const clear = document.querySelector('#C');
 clear.addEventListener('click', () => {
@@ -101,9 +119,24 @@ clear.addEventListener('click', () => {
   currentValue = 0;
   updateValue();
 })
+// add touch support
+clear.addEventListener('touchstart', () => {
+  arr = [];
+  currentValue = 0;
+  updateValue();
+})
 
 const allClear = document.querySelector('#AC');
 allClear.addEventListener('click', () => {
+  arr = [];
+  currentOperator = undefined;
+  operators.forEach((operator) => {operator.classList.remove('on')});
+  recentValue = '';
+  currentValue = 0;
+  updateValue();
+})
+// add touch support
+allClear.addEventListener('touchstart', () => {
   arr = [];
   currentOperator = undefined;
   operators.forEach((operator) => {operator.classList.remove('on')});
