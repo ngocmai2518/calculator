@@ -19,6 +19,7 @@ main {
   flex-direction: column;
   align-items: center;
   flex-wrap: wrap;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 3px 8px;
 }
 
 .display {
@@ -55,23 +56,41 @@ button {
   border-radius: 50%;
   margin: 2%;
   box-sizing: border-box;
+  transition-duration: 0.3s;
 }
 
-.number {
-  background-color: #686868;
-}
-
-.operator {
+.operator, #equal {
   background-color: orange;
+}
+
+.operator:active, #equal:active {
+  background-color: rgb(255, 217, 145)
 }
 
 .other {
   background-color: rgb(197, 197, 197);
   color: black;
 }
+
+.other:active {
+  background-color: rgb(217, 217, 217);
+}
+
+.number {
+  background-color: #686868;
+}
+
+.number:active {
+  background-color: #828282;
+}
 #zero {
   width: 44%;
   aspect-ratio: 11/5;
   border-radius: calc(var(--bHeight)/10);
   box-sizing: border-box;
+}
+
+.on {
+  background-color: white;
+  color: orange;
 }
