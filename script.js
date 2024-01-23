@@ -141,7 +141,6 @@ allClear.addEventListener('click', () => {
 
 // add touch support
 allClear.addEventListener('touchstart', () => {
-  allClear.preventDefault();
   arr = [];
   currentOperator = undefined;
   operators.forEach((operator) => {operator.classList.remove('on')});
