@@ -153,8 +153,8 @@ allClear.addEventListener('touchstart', () => {
 
 // prevent event twice triggered
 const buttons = document.querySelectorAll("button")
-buttons.forEach(button) {
+buttons.forEach((button) => {
   button.addEventListener('touchstart', (event) => {
     event.preventDefault();
   })
-}
+});
