@@ -37,9 +37,9 @@ numbers.forEach((number) => {
 // add touch support
   number.addEventListener('touchstart', () => {
     getValue(number.value);
-    number.preventDefault();
   })
 });
+
 
 let currentOperator = undefined;
 
@@ -60,6 +60,7 @@ operators.forEach((operator) => {
     arr = [];
     operator.classList.add('on');
   })
+
 })  
 
 
@@ -106,20 +107,13 @@ percentage.addEventListener('click', () => {
   currentOperator = '%';
   calculate() 
 });
-
 // add touch support
-percentage.addEventListener('touchstart',  () => {
-  percentage.preventDefault();
-  calculate()
-});
+percentage.addEventListener('touchstart', calculate);
 
 const equal = document.querySelector('#equal');
 equal.addEventListener('click', calculate);
 // add touch support
-equal.addEventListener('touchstart',  () => {
-  equal.preventDefault();
-  calculate()
-});
+equal.addEventListener('touchstart', calculate);
 
 const clear = document.querySelector('#C');
 clear.addEventListener('click', () => {
@@ -129,12 +123,11 @@ clear.addEventListener('click', () => {
 })
 // add touch support
 clear.addEventListener('touchstart', () => {
-  clear.preventDefault();
   arr = [];
   currentValue = 0;
   updateValue();
-
 })
+
 
 const allClear = document.querySelector('#AC');
 allClear.addEventListener('click', () => {
@@ -145,6 +138,7 @@ allClear.addEventListener('click', () => {
   currentValue = 0;
   updateValue();
 })
+
 // add touch support
 allClear.addEventListener('touchstart', () => {
   allClear.preventDefault();
@@ -155,3 +149,12 @@ allClear.addEventListener('touchstart', () => {
   currentValue = 0;
   updateValue();
 })
+
+
+// prevent event twice triggered
+const buttons = document.querySelectorAll("button")
+buttons.forEach(button) {
+  button.addEventListener('touchstart', (event) => {
+    event.preventDefault();
+  })
+}
